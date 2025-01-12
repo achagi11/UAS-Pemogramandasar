@@ -1,0 +1,69 @@
+Anggota Kelompok 2: 
+1.Vahmi reidina achagi (24104410094)
+2.Muhammad Putra Apridika (24104410075)
+3.Adile Ikhsan Muhammad Al Masyhuri (24104410071)
+4.Dimas Akbar Maulana (24104410059)
+5.Premas Aji Susilo (24104410055)
+
+#include <iostream>
+
+using namespace std;
+
+double determinan(double matrikA[3][3]){
+        return
+            ((matrikA[0][0]*matrikA[1][1]*matrikA[2][2])+
+            (matrikA[0][1]*matrikA[1][2]*matrikA[2][0])+
+            (matrikA[0][2]*matrikA[1][0]*matrikA[2][1]))
+                                    -
+            ((matrikA[0][2]*matrikA[1][1]*matrikA[2][0])+
+            (matrikA[0][0]*matrikA[1][2]*matrikA[2][1])+
+            (matrikA[0][1]*matrikA[1][0]*matrikA[2][2]));
+}
+
+int main(){
+    double invers[3][3];
+    double matrikA[3][3]= {
+        {4,2,8},
+        {2,1,5},
+        {3,2,4}
+    };
+
+    cout << "matrikA" << endl << "============" << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << matrikA[i][j] << " | ";
+        }
+        cout << endl;
+    }
+
+    cout << "============";
+    double det = determinan(matrikA);
+    cout << endl << "determinan = " << det << endl << endl;
+  
+   if (det == 0) {
+        cout << "matriks tidak dapat di invers";
+   } else {
+    invers[0][0] =  (matrikA[1][1] * matrikA[2][2] - matrikA[1][2] * matrikA[2][1]) / det;
+    invers[1][0] = -(matrikA[1][0] * matrikA[2][2] - matrikA[1][2] * matrikA[2][0]) / det;
+    invers[2][0] =  (matrikA[1][0] * matrikA[2][1] - matrikA[1][1] * matrikA[2][0]) / det;
+
+    invers[0][1] = -(matrikA[0][1] * matrikA[2][2] - matrikA[0][2] * matrikA[2][1]) / det;
+    invers[1][1] =  (matrikA[0][0] * matrikA[2][2] - matrikA[0][2] * matrikA[2][0]) / det;
+    invers[2][1] = -(matrikA[0][0] * matrikA[2][1] - matrikA[0][1] * matrikA[2][0]) / det;
+
+    invers[0][2] =  (matrikA[0][1] * matrikA[1][2] - matrikA[0][2] * matrikA[1][1]) / det;
+    invers[1][2] = -(matrikA[0][0] * matrikA[1][2] - matrikA[0][2] * matrikA[1][0]) / det;
+    invers[2][2] =  (matrikA[0][0] * matrikA[1][1] - matrikA[0][1] * matrikA[1][0]) / det;
+    }
+
+    cout << "invers matriks" << endl << "===============" << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << invers[i][j] << " | ";
+        }
+        cout << endl;
+    }
+    cout << "===============";
+
+    return 0;
+}
