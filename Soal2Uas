@@ -1,0 +1,110 @@
+Anggota Kelompok: 
+1.Vahmi reidina achagi (24104410094)
+2.Muhammad Putra Apridika (24104410075)
+3.Adile Ikhsan Muhammad Al Masyhuri (24104410071)
+4.Dimas Akbar Maulana (24104410059)
+5.Premas Aji Susilo (24104410055)
+
+#include <iostream>
+
+#include <vector>
+
+#include <algorithm>
+
+#include <cmath>
+
+#include <iomanip>
+
+using namespace std;
+
+
+
+int main(){
+
+    vector <int> nilai ={92,65,74,80,80,70,78};
+
+
+
+    cout << "data nilai mahasiswa = ";
+
+    for (int i = 0; i < 7; i++) {
+
+       cout << nilai[i] <<" | ";
+
+    }
+
+
+
+    // menghitung mean atau rata rata
+
+    double penjumlahan  = 0;
+
+    for (int n : nilai) {
+
+        penjumlahan += n;
+
+    }
+
+    double mean = penjumlahan / nilai.size();
+
+    cout << endl << "mean = " << mean;
+
+
+
+
+
+    // menghitung median
+
+    sort(nilai.begin(), nilai.end());
+
+    double median;
+
+    int n = nilai.size();
+
+    if (n % 2 == 0) {
+
+        median = (nilai[n / 2 - 1] + nilai[n / 2]) / 2.0;
+
+    } else {
+
+        median = nilai[n / 2];
+
+    }
+
+    cout << endl << "urutan nilai dari terkecil = ";
+
+    for (int i = 0; i < 7; i++) {
+
+       cout << nilai[i] <<" | ";
+
+    }
+
+    cout << endl << "median = " << median;
+
+
+
+
+
+    // Menghitung standard deviasi
+
+    double sigma = 0;
+
+    for (int n : nilai) {
+
+        sigma += pow((n - mean), 2);
+
+    }
+
+    sigma /= nilai.size();
+
+    double standartDevisiasi = sqrt(sigma);
+
+
+
+    cout << endl << setprecision (3) << "standar devisiasi = " << standartDevisiasi;
+
+
+
+
+
+}
